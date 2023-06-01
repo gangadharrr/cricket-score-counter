@@ -8,6 +8,8 @@ function ScoreComponent(props) {
         <p>Dot Balls : {props.dotBalls}</p>
         <p>No Balls : {props.noBalls}</p>
         <p>Wides : {props.wides}</p>
+        <p>Sixes : {props.sixes}</p>
+        <p>Fours : {props.fours}</p>
     </div>
   )
 }

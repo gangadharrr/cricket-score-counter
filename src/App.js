@@ -3,6 +3,7 @@ import './App.css';
 import ButtonComponent from './components/ButtonComponent/ButtonComponent';
 import './components/ButtonComponent/ButtonComponent.css'
 import ScoreComponent from './components/ScoreComponent/ScoreComponent';
+import './components/ScoreComponent/ScoreComponent.css'
 import React, { useState } from "react";
 import ScoreHistoryComponent from './components/ScoreHistoryComponent/ScoreHistoryComponent';
 
@@ -13,9 +14,19 @@ function App() {
   const [wides ,setWides]=useState(0);
   const [wickets ,setWickets]=useState(0);
   const [scoreHistory,setScoreHistory]=useState([]);
+  const [sixes,setSixes]=useState(0);
+  const [fours,setFours]=useState(0);
   
   function scoreUpdate(value,ex='')
   {
+    if(value==6)
+    {
+      setSixes(sixes+1);
+    }
+    if(value==4)
+    {
+      setFours(fours+1);
+    }
     let _history=scoreHistory;
     _history.push(ex==''?value:ex)
     setScoreHistory(_history);
@@ -44,12 +55,12 @@ function App() {
   return (
     <div className="App">
       <h1>Champions League T20</h1>
-      <ScoreComponent score={score} wides={wides} dotBalls={dotBalls} noBalls={noBalls} wickets={wickets}/>
+      <ScoreComponent score={score} wides={wides} dotBalls={dotBalls} noBalls={noBalls} wickets={wickets} sixes={sixes} fours={fours}/>
       <div className='row'>
         <div className='score-history' id="scroller" >
           <ScoreHistoryComponent  data={scoreHistory}/>
         </div>
-        <ButtonComponent onClick={()=>{setWickets(0);setScore(0);setDotBalls(0);setNoBalls(0);setWides(0);setScoreHistory([])}} value="&#10227;"/>
+        <ButtonComponent onClick={()=>{setFours(0);setSixes(0);setWickets(0);setScore(0);setDotBalls(0);setNoBalls(0);setWides(0);setScoreHistory([])}} value="&#10227;"/>
       </div>
       <div className='buttons'>
         <ButtonComponent onClick={()=>{scoreUpdate(6)}} value="6"/>

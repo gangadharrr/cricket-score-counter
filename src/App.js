@@ -11,6 +11,7 @@ function App() {
   const [dotBalls ,setDotBalls]=useState(0);
   const [noBalls ,setNoBalls]=useState(0);
   const [wides ,setWides]=useState(0);
+  const [wickets ,setWickets]=useState(0);
   const [scoreHistory,setScoreHistory]=useState([]);
   
   function scoreUpdate(value,ex='')
@@ -43,12 +44,12 @@ function App() {
   return (
     <div className="App">
       <h1>Champions League T20</h1>
-      <ScoreComponent score={score} wides={wides} dotBalls={dotBalls} noBalls={noBalls}/>
+      <ScoreComponent score={score} wides={wides} dotBalls={dotBalls} noBalls={noBalls} wickets={wickets}/>
       <div className='row'>
         <div className='score-history' id="scroller" >
           <ScoreHistoryComponent  data={scoreHistory}/>
         </div>
-        <ButtonComponent onClick={()=>{setScore(0);setDotBalls(0);setNoBalls(0);setWides(0);setScoreHistory([])}} value="&#10227;"/>
+        <ButtonComponent onClick={()=>{setWickets(0);setScore(0);setDotBalls(0);setNoBalls(0);setWides(0);setScoreHistory([])}} value="&#10227;"/>
       </div>
       <div className='buttons'>
         <ButtonComponent onClick={()=>{scoreUpdate(6)}} value="6"/>
@@ -59,6 +60,7 @@ function App() {
         <ButtonComponent onClick={dotBallsUpdate} value="0"/>
         <ButtonComponent  onClick={noBallsUpdate} value="nb"/>
         <ButtonComponent  onClick={widesUpdate}value="wd"/>
+        <ButtonComponent  onClick={()=>{scoreUpdate(0,'W');setWickets(wickets+1)}}value="W"/>
       </div>
     </div>
   );

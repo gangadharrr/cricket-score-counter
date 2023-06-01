@@ -1,0 +1,15 @@
+.ButtonComponent
+{
+    background-color: white;
+    height: 30px;
+    width: 40px;
+    border: 0px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: large;
+
+}
+.ButtonComponent:hover
+{
+    filter: invert(100%);
+}
